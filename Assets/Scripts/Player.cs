@@ -22,7 +22,6 @@ public class Player : MonoBehaviour {
 			rigidbody2D.AddForce(new Vector2(0, JumpForce));
 		}
 		Physics2D.IgnoreLayerCollision( LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground"), rigidbody2D.velocity.y > 0 );
-		print ( grounded );
 	}
 
 	void FixedUpdate() {
