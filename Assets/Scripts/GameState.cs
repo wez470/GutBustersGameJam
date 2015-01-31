@@ -32,11 +32,13 @@ public class GameState : MonoBehaviour {
 			if (frameInput[i] == '\b' && currentTarget != null){
 				e.Word = e.FullWord;
 				currentTarget = null;
+				e.UpdateFancy();
 			}
 			
 			if (currentTarget != null){
 				if (e.Word[0] == frameInput[i]){ 
 					e.Word = e.Word.Substring (1);
+					e.UpdateFancy();
 				}
 				
 				if (e.Word.Length == 0){
@@ -52,6 +54,7 @@ public class GameState : MonoBehaviour {
 				if (currentEnemies.TryGetValue(frameInput[0], out currentTarget)){
 					e = currentTarget.GetComponent<Enemy>();
 					e.Word = e.Word.Substring (1);
+					e.UpdateFancy();
 					
 					if (e.Word.Length == 0){
 						//cleanup enemy will abstract later
@@ -79,8 +82,26 @@ public class GameState : MonoBehaviour {
 			above.y += 2;
 			Vector3 camPos = Camera.main.WorldToScreenPoint (above);
 			//camPos = new Vector3(Mathf.Clamp (camPos.x, Screen.width),Mathf.Clamp (),camPos.z);
-			if (g != null && e != null)
-				GUI.Label(new Rect((camPos.x-20), (Screen.height - camPos.y+10), 100, 50), e.Word, e.style);
+			if (g != null && e != null){
+			
+				Rect r = new Rect((camPos.x-20), (Screen.height - camPos.y+10), 100, 50);
+				
+				DrawOutline(r,e.FullWord, 1, e.style);
+				GUI.Label (r,e.Fancy,e.style);
+			}
 		}
+	}
+	
+	void DrawOutline(Rect r,string t,int strength,GUIStyle style){
+		GUI.color=new Color(0,0,0,1);
+		int i;
+		for (i=-strength;i<=strength;i++){
+			GUI.Label(new Rect(r.x-strength,r.y+i,r.width,r.height),t,style);
+			GUI.Label(new Rect(r.x+strength,r.y+i,r.width,r.height),t,style);
+		}for (i=-strength+1;i<=strength-1;i++){
+			GUI.Label(new Rect(r.x+i,r.y-strength,r.width,r.height),t,style);
+			GUI.Label(new Rect(r.x+i,r.y+strength,r.width,r.height),t,style);
+		}
+		GUI.color=new Color(1,1,1,1);
 	}
 }

@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour {
 			GameObject go = (GameObject) Instantiate (enemyPF, new Vector3(20.0f, -6.5f, 0.0f), Quaternion.identity);
 			gs.currentEnemies.Add (word[0], go);
 			Enemy e = go.GetComponent<Enemy>();
-			e.GiveWord(word);
+			e.SetNewWord(word);
 			lastSpawnTime = Time.time;
 		}
 	}
