@@ -16,5 +16,7 @@ public class Enemy : MonoBehaviour {
 		GameObject p = GameObject.FindGameObjectWithTag("Player");
 		Vector2 pos = p.transform.position;
 		
+		
+		
 	}
 }
