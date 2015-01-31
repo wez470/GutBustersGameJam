@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour {
 	
-	private float startTime;
+	private float curTime;
 	private float lastSpawnTime;
 	public float spawnRate = 5.0f;
 	private GameState gs;
@@ -13,19 +13,19 @@ public class Spawner : MonoBehaviour {
 	void Start () {
 	
 		dict = System.IO.File.ReadAllLines(Application.dataPath + "/Dictionary/dict.txt");
-		startTime = Time.time;
-		lastSpawnTime = startTime;
+		curTime = Time.time;
+		lastSpawnTime = curTime;
 		gs = GameObject.FindGameObjectWithTag("GS").GetComponent<GameState>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		startTime = Time.time;
-		
-		if (Mathf.Abs(startTime - lastSpawnTime) > spawnRate){
+		curTime = Time.time;
+		if (Mathf.Abs(curTime - lastSpawnTime) > spawnRate){
 			//find a word without an equivalent starting character on the board,
 			//instantiate an enemy with that word
 			//Dict Search
+			Debug.Log (curTime + " " + lastSpawnTime + " " + (curTime-lastSpawnTime) + " " + spawnRate);
 			string word = GenerateWord();
 			GameObject go = (GameObject) Instantiate (enemyPF, new Vector3(20.0f, -6.5f, 0.0f), Quaternion.identity);
 			gs.currentEnemies.Add (word[0], go);

@@ -79,8 +79,8 @@ public class GameState : MonoBehaviour {
 			above.y += 2;
 			Vector3 camPos = Camera.main.WorldToScreenPoint (above);
 			//camPos = new Vector3(Mathf.Clamp (camPos.x, Screen.width),Mathf.Clamp (),camPos.z);
-			if (g != null)
-			GUI.Label(new Rect((camPos.x-20), (Screen.height - camPos.y+10), 100, 50), e.Word, e.style);
+			if (g != null && e != null)
+				GUI.Label(new Rect((camPos.x-20), (Screen.height - camPos.y+10), 100, 50), e.Word, e.style);
 		}
 	}
 }

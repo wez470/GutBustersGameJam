@@ -21,9 +21,9 @@ public class Enemy : MonoBehaviour {
 		GameObject p = GameObject.FindGameObjectWithTag("Player");
 		Vector3 pos = p.transform.position;
 		
-		Vector3 towards = pos - transform.position;
+		Vector3 towards = Vector3.Normalize (pos - transform.position)*5.0f;
 		
-		this.rigidbody2D.AddForce(towards*0.5f);
+		this.rigidbody2D.velocity = new Vector2(towards.x, towards.y);
 	}
 	
 	public void GiveWord(string w){
