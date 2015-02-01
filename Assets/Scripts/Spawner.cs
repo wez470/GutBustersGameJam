@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
 		startTime = curTime;
 		gs = GameObject.FindGameObjectWithTag("GS").GetComponent<GameState>();
 		Array.Sort (dict, (x, y) => x.Length.CompareTo(y.Length));
-		dictFrac = dict.Length/10;
+		dictFrac = dict.Length/20;
 	}
 	
 	// Update is called once per frame
@@ -44,17 +44,21 @@ public class Spawner : MonoBehaviour {
 			lastSpawnTime = Time.time;
 		}
 		
-		if ((Mathf.Abs(startTime - curTime) > (3+3*mplier)) && !maxDifficulty){
-			if (mplier < 9) mplier++;
-			if (mplier > 8) maxDifficulty = true;
+		if ((Mathf.Abs(startTime - curTime) > (5+5*mplier)) && !maxDifficulty){
+			if (mplier < 19) mplier++;
+			if (mplier > 18) maxDifficulty = true;
 		}
+	}
+	
+	void ShootAndCleanup(){
+	
 	}
 	
 	public string GenerateWord(){
 		idx = 0;
 		char first = 'a';
 		string word;
-		rangeCeil = dictFrac-1+((mplier)*dictFrac);
+		rangeCeil = (2*dictFrac)-1+((mplier-1)*dictFrac);
 		rangeFloor = mplier*dictFrac;
 		do
 		{

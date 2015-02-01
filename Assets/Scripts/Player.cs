@@ -2,6 +2,18 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
+	
+	bool shooting;
+	Animator a;
+	
+	public void StartShooting(){
+		a.SetBool ("Shooting",true);
+	}
+	
+	public void DoneShooting(){
+		a.SetBool ("Shooting",false);
+	}
+
 //	public float Speed;
 //	public float JumpForce;
 //	public LayerMask WhatIsGround;
@@ -11,9 +23,10 @@ public class Player : MonoBehaviour {
 //	public Transform groundCheck;
 //	private float groundRadius = 0.2f;
 
-//	// Use this for initialization
-//	void Start () {
-//	}
+	// Use this for initialization
+	void Start () {
+		a = GetComponent<Animator>();
+	}
 //	
 //	// Update is called once per frame
 //	void Update () {

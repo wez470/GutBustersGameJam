@@ -11,12 +11,16 @@ public class Enemy : MonoBehaviour {
 	public int correct;
 	public char FirstChar;
 	public string first;
+	public bool Dying;
+	Animator a;
 	// Use this for initialization
 	void Start () {
 		FirstChar = Word[0];
 		first = FirstChar.ToString();
 		FullWord = Word;
 		correct = 0;	
+		a = GetComponent<Animator>();
+		Dying = false;
 	}
 	
 	// Update is called once per frame
@@ -25,8 +29,23 @@ public class Enemy : MonoBehaviour {
 		Vector3 pos = p.transform.position;
 		
 		Vector3 towards = Vector3.Normalize (pos - transform.position)*2.0f;
-		
-		this.rigidbody2D.velocity = new Vector2(towards.x, towards.y);
+		if (!Dying){
+			this.rigidbody2D.velocity = new Vector2(towards.x, towards.y);
+		}
+		else
+		{
+			this.rigidbody2D.velocity = new Vector2(0, 0);
+		}
+	}
+	
+	public void BustGut(){
+		a.SetBool("Dying",true);
+		Dying = true;
+	}
+	
+	public void Dead(){
+		a.SetBool("Dying",false);
+		Destroy(this.gameObject);
 	}
 	
 	public void SetNewWord(string w){

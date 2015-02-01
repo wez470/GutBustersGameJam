@@ -8,11 +8,13 @@ public class GameState : MonoBehaviour {
 	public GameObject currentTarget;
 	private Enemy e;
 	public Spawner sp;
+	public Player ch;
 
 	// Use this for initialization
 	void Start () {
 		currentEnemies = new Dictionary<char, GameObject>();
 		sp = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+		ch = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
@@ -50,10 +52,7 @@ public class GameState : MonoBehaviour {
 				
 				if (e.Word.Length == 0){
 					//cleanup enemy will abstract later
-					currentEnemies.Remove (e.FirstChar);
-					GameObject.Destroy (currentTarget);
-					currentTarget = null;
-					e = null;
+					ShootAndCleanup();
 				}
 			}
 			else
@@ -65,10 +64,7 @@ public class GameState : MonoBehaviour {
 					
 					if (e.Word.Length == 0){
 						//cleanup enemy will abstract later
-						currentEnemies.Remove (e.FirstChar);
-						GameObject.Destroy (currentTarget);
-						currentTarget = null;
-						e = null;
+						ShootAndCleanup();
 						
 					}
 				}
@@ -76,6 +72,14 @@ public class GameState : MonoBehaviour {
 			}
 			
 		}
+	}
+	
+	void ShootAndCleanup(){
+		currentEnemies.Remove (e.FirstChar);
+		ch.StartShooting();
+		e.BustGut();
+		currentTarget = null;
+		e = null;
 	}
 	
 	//update textbox positions above each player
