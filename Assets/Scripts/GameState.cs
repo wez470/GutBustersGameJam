@@ -42,9 +42,9 @@ public class GameState : MonoBehaviour {
 				}
 				else
 				{
-					currentEnemies.Remove (e.FirstChar);
-					e.SetNewWord(sp.GenerateWord());
-					currentEnemies.Add (e.FirstChar, currentTarget);
+					//currentEnemies.Remove (e.FirstChar);
+					e.SetNewWord(e.FullWord);
+					//currentEnemies.Add (e.FirstChar, currentTarget);
 					currentTarget = null;
 				}
 				
