@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 
@@ -15,6 +15,12 @@ public class Spawner : MonoBehaviour {
 	public int idx;
 	public int rangeCeil, rangeFloor;
 	public int dictFrac;
+	
+	public GameObject loc1;
+	public GameObject loc2;
+	public GameObject loc3;
+	GameObject[] locs;
+	
 	// Use this for initialization
 	void Start () {
 		mplier = 0;
@@ -25,6 +31,10 @@ public class Spawner : MonoBehaviour {
 		gs = GameObject.FindGameObjectWithTag("GS").GetComponent<GameState>();
 		Array.Sort (dict, (x, y) => x.Length.CompareTo(y.Length));
 		dictFrac = dict.Length/20;
+		locs = new GameObject[3];
+		locs[0] = loc1;
+		locs[1] = loc2;
+		locs[2] = loc3;
 	}
 	
 	// Update is called once per frame
@@ -37,7 +47,7 @@ public class Spawner : MonoBehaviour {
 			//Dict Search
 			Debug.Log (curTime + " " + lastSpawnTime + " " + (curTime-lastSpawnTime) + " " + spawnRate);
 			string word = GenerateWord();
-			GameObject go = (GameObject) Instantiate (enemyPF, new Vector3(4.0f, -1.7f, 0.0f), Quaternion.identity);
+			GameObject go = (GameObject) Instantiate (enemyPF, locs[(UnityEngine.Random.Range(0,3))].transform.position, Quaternion.identity);
 			gs.currentEnemies.Add (word[0], go);
 			Enemy e = go.GetComponent<Enemy>();
 			e.SetNewWord(word);
@@ -49,10 +59,7 @@ public class Spawner : MonoBehaviour {
 			if (mplier > 18) maxDifficulty = true;
 		}
 	}
-	
-	void ShootAndCleanup(){
-	
-	}
+
 	
 	public string GenerateWord(){
 		idx = 0;
