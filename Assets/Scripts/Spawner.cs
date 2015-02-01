@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mplier = 0;
-		dict = System.IO.File.ReadAllLines(Application.dataPath + "/Dictionary/dict.txt");
+		dict = System.IO.File.ReadAllLines(Application.streamingAssetsPath + "/dict.txt");
 		curTime = Time.time;
 		lastSpawnTime = curTime;
 		startTime = curTime;
