@@ -24,12 +24,13 @@ public class Enemy : MonoBehaviour {
 		GameObject p = GameObject.FindGameObjectWithTag("Player");
 		Vector3 pos = p.transform.position;
 		
-		Vector3 towards = Vector3.Normalize (pos - transform.position)*5.0f;
+		Vector3 towards = Vector3.Normalize (pos - transform.position)*2.0f;
 		
 		this.rigidbody2D.velocity = new Vector2(towards.x, towards.y);
 	}
 	
 	public void SetNewWord(string w){
+		Debug.Log ("word: " + w);
 		Word = w;
 		FirstChar = Word[0];
 		FullWord = w;
