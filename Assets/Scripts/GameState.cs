@@ -32,7 +32,7 @@ public class GameState : MonoBehaviour {
 	}
 	
 	void DrawScore(){
-		Rect r = new Rect(Screen.width - 100, 25, 100, 50);
+		Rect r = new Rect(Screen.width - 300, 25, 100, 50);
 		
 		DrawOutline(r,"Score: " + Score, 2, scoreStyle);
 		GUI.Label(r, "Score: " + Score, scoreStyle);
