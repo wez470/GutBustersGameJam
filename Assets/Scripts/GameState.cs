@@ -7,15 +7,16 @@ public class GameState : MonoBehaviour {
 	public Dictionary<char, GameObject> currentEnemies;
 	public GameObject currentTarget;
 	private Enemy e;
+	public Spawner sp;
 
 	// Use this for initialization
 	void Start () {
 		currentEnemies = new Dictionary<char, GameObject>();
+		sp = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (currentEnemies.Count);
 		GetInputCharacters();
 		
 	}
@@ -30,8 +31,7 @@ public class GameState : MonoBehaviour {
 		for (int i = 0; i < frameInput.Length; i++){
 			//backspace
 			if (frameInput[i] == '\b' && currentTarget != null){
-				e.Word = e.FullWord;
-				currentTarget = null;
+				e.Word = e.FullWord;	
 				e.UpdateFancy();
 			}
 			
@@ -39,6 +39,14 @@ public class GameState : MonoBehaviour {
 				if (e.Word[0] == frameInput[i]){ 
 					e.Word = e.Word.Substring (1);
 					e.UpdateFancy();
+				}
+				else
+				{
+					Debug.Log ("wat");
+					currentEnemies.Remove (e.FirstChar);
+					e.SetNewWord(sp.GenerateWord());
+					currentEnemies.Add (e.FirstChar, currentTarget);
+					currentTarget = null;
 				}
 				
 				if (e.Word.Length == 0){

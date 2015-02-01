@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour {
 	public void SetNewWord(string w){
 		Word = w;
 		FirstChar = Word[0];
-		FullWord = Word;
+		FullWord = w;
 		Fancy = Fancify (FullWord, 0);
 	}
 	

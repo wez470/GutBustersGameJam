@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour {
 		curTime = Time.time;
 		lastSpawnTime = curTime;
 		gs = GameObject.FindGameObjectWithTag("GS").GetComponent<GameState>();
+		
 	}
 	
 	// Update is called once per frame
@@ -35,17 +36,14 @@ public class Spawner : MonoBehaviour {
 		}
 	}
 	
-	string GenerateWord(){
+	public string GenerateWord(){
 		int idx = 0;
 		char first = 'a';
 		string word;
 		do
 		{
 			idx = Random.Range(0, dict.Length-1);
-			Debug.Log (idx);
 			word = dict[idx];
-			Debug.Log (word);
-			Debug.Log(gs.currentEnemies == null);
 			first = word.ToCharArray()[0];
 			
 		}while(gs.currentEnemies.ContainsKey (first));
