@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour {
 	public char FirstChar;
 	public string first;
 	public bool Dying;
+	public AudioClip guts;
+	public AudioClip guts2;
+	public AudioClip groan;
+	AudioClip[] gutsArr;
+	private int whichGuts;
 	Animator a;
 	// Use this for initialization
 	void Start () {
@@ -21,6 +26,9 @@ public class Enemy : MonoBehaviour {
 		correct = 0;	
 		a = GetComponent<Animator>();
 		Dying = false;
+		gutsArr = new AudioClip[2];
+		gutsArr[0] = guts;
+		gutsArr[1] = guts2;
 	}
 	
 	// Update is called once per frame
@@ -41,6 +49,12 @@ public class Enemy : MonoBehaviour {
 	public void BustGut(){
 		a.SetBool("Dying",true);
 		Dying = true;
+		AudioSource.PlayClipAtPoint(gutsArr[Random.Range (0,2)],transform.position,0.75f);
+	}
+	
+	public void PlayAudio(){
+		
+		AudioSource.PlayClipAtPoint(groan, transform.position);
 	}
 	
 	public void Dead(){
