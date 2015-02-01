@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e71fb97ad87897e499d53d56e05768a0
+guid: 678e28d1550ca9742b7dcc699327da0d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: GutBustersTitle_0
-    21300002: GutBustersTitle_1
-    21300004: GutBustersTitle_2
-    21300006: GutBustersTitle_3
+    21300000: GutBustersStartButton_0
+    21300002: GutBustersStartButton_1
+    21300004: GutBustersStartButton_2
+    21300006: GutBustersStartButton_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,7 +26,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 4096
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -47,43 +47,43 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: GutBustersTitle_0
+    - name: GutBustersStartButton_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 781
-        width: 1500
-        height: 780
+        y: 232
+        width: 462
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: GutBustersTitle_1
+    - name: GutBustersStartButton_1
       rect:
         serializedVersion: 2
-        x: 1500
-        y: 781
-        width: 1500
-        height: 780
+        x: 462
+        y: 232
+        width: 462
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: GutBustersTitle_2
+    - name: GutBustersStartButton_2
       rect:
         serializedVersion: 2
         x: 0
         y: 1
-        width: 1500
-        height: 780
+        width: 462
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: GutBustersTitle_3
+    - name: GutBustersStartButton_3
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 462
         y: 1
-        width: 1500
-        height: 780
+        width: 462
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
