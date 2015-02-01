@@ -58,4 +58,10 @@ public class Player : MonoBehaviour {
 //		scale.x *= -1;
 //		transform.localScale = scale;
 //	}
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag == "Enemy") {
+			Application.LoadLevel( "Title" );
+		}
+	}
 }
