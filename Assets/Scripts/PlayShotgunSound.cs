@@ -10,7 +10,7 @@ public class PlayShotgunSound : MonoBehaviour {
 	}
 	
 	public void Pray(){
-		AudioSource.PlayClipAtPoint (ac, this.transform.position, 0.075f);
+		AudioSource.PlayClipAtPoint (ac, this.transform.position, 0.05f);
 	}
 
 	// Use this for initialization

@@ -9,12 +9,15 @@ public class GameState : MonoBehaviour {
 	private Enemy e;
 	public Spawner sp;
 	public Player ch;
+	public GUIStyle scoreStyle;
+	int Score;
 
 	// Use this for initialization
 	void Start () {
 		currentEnemies = new Dictionary<char, GameObject>();
 		sp = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
 		ch = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		Score = 0;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,14 @@ public class GameState : MonoBehaviour {
 	
 	void OnGUI(){
 		TextAboveEnemies();
+		DrawScore();
+	}
+	
+	void DrawScore(){
+		Rect r = new Rect(Screen.width - 100, 25, 100, 50);
+		
+		DrawOutline(r,"Score: " + Score, 2, scoreStyle);
+		GUI.Label(r, "Score: " + Score, scoreStyle);
 	}
 	
 	void GetInputCharacters(){
@@ -78,6 +89,7 @@ public class GameState : MonoBehaviour {
 		currentEnemies.Remove (e.FirstChar);
 		ch.StartShooting();
 		e.BustGut();
+		Score++;
 		currentTarget = null;
 		e = null;
 	}
