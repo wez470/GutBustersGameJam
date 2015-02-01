@@ -22,6 +22,7 @@ public class GameState : MonoBehaviour {
 	}
 	
 	void OnGUI(){
+		Debug.Log ("In OnGUI");
 		TextAboveEnemies();
 	}
 	
@@ -87,14 +88,15 @@ public class GameState : MonoBehaviour {
 			
 			Vector3 above = g.transform.position;
 			//needs to be done before converting to screen poitn from world point
-			above.y += 2;
+			above.y += 3;
 			Vector3 camPos = Camera.main.WorldToScreenPoint (above);
 			//camPos = new Vector3(Mathf.Clamp (camPos.x, Screen.width),Mathf.Clamp (),camPos.z);
 			if (g != null && e != null){
-			
+				Debug.Log ("bonjour");
+				Debug.Log(Screen.height + " " + Screen.width);
 				Rect r = new Rect((camPos.x-20), (Screen.height - camPos.y+10), 100, 50);
 				
-				DrawOutline(r,e.FullWord, 1, e.style);
+				DrawOutline(r,e.FullWord, 2, e.style);
 				GUI.Label (r,e.Fancy,e.style);
 			}
 		}

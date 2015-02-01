@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		dict = System.IO.File.ReadAllLines(Application.dataPath + "/Dictionary/dict.txt");
+		dict = System.IO.File.ReadAllLines(Application.dataPath + "/Dictionary/badwords.txt");
 		curTime = Time.time;
 		lastSpawnTime = curTime;
 		gs = GameObject.FindGameObjectWithTag("GS").GetComponent<GameState>();
@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour {
 			//Dict Search
 			Debug.Log (curTime + " " + lastSpawnTime + " " + (curTime-lastSpawnTime) + " " + spawnRate);
 			string word = GenerateWord();
-			GameObject go = (GameObject) Instantiate (enemyPF, new Vector3(20.0f, -6.5f, 0.0f), Quaternion.identity);
+			GameObject go = (GameObject) Instantiate (enemyPF, new Vector3(4.0f, -1.7f, 0.0f), Quaternion.identity);
 			gs.currentEnemies.Add (word[0], go);
 			Enemy e = go.GetComponent<Enemy>();
 			e.SetNewWord(word);
