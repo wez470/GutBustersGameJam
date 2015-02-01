@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Spawner : MonoBehaviour {
 	
@@ -16,7 +17,7 @@ public class Spawner : MonoBehaviour {
 		curTime = Time.time;
 		lastSpawnTime = curTime;
 		gs = GameObject.FindGameObjectWithTag("GS").GetComponent<GameState>();
-		
+		Array.Sort (dict, (x, y) => x.Length.CompareTo(y.Length));
 	}
 	
 	// Update is called once per frame
@@ -42,7 +43,7 @@ public class Spawner : MonoBehaviour {
 		string word;
 		do
 		{
-			idx = Random.Range(0, dict.Length-1);
+			idx = UnityEngine.Random.Range(0, dict.Length-1);
 			word = dict[idx];
 			first = word.ToCharArray()[0];
 			

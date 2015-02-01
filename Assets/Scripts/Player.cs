@@ -2,14 +2,14 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	public float Speed;
-	public float JumpForce;
-	public LayerMask WhatIsGround;
-
-	private bool facingRight = true;
-	private bool grounded = false;
-	public Transform groundCheck;
-	private float groundRadius = 0.2f;
+//	public float Speed;
+//	public float JumpForce;
+//	public LayerMask WhatIsGround;
+//
+//	private bool facingRight = true;
+//	private bool grounded = false;
+//	public Transform groundCheck;
+//	private float groundRadius = 0.2f;
 
 //	// Use this for initialization
 //	void Start () {
