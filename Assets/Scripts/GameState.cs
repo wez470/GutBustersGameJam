@@ -22,7 +22,6 @@ public class GameState : MonoBehaviour {
 	}
 	
 	void OnGUI(){
-		Debug.Log ("In OnGUI");
 		TextAboveEnemies();
 	}
 	
@@ -43,7 +42,6 @@ public class GameState : MonoBehaviour {
 				}
 				else
 				{
-					Debug.Log ("wat");
 					currentEnemies.Remove (e.FirstChar);
 					e.SetNewWord(sp.GenerateWord());
 					currentEnemies.Add (e.FirstChar, currentTarget);
@@ -92,8 +90,6 @@ public class GameState : MonoBehaviour {
 			Vector3 camPos = Camera.main.WorldToScreenPoint (above);
 			//camPos = new Vector3(Mathf.Clamp (camPos.x, Screen.width),Mathf.Clamp (),camPos.z);
 			if (g != null && e != null){
-				Debug.Log ("bonjour");
-				Debug.Log(Screen.height + " " + Screen.width);
 				Rect r = new Rect((camPos.x-20), (Screen.height - camPos.y+10), 100, 50);
 				
 				DrawOutline(r,e.FullWord, 2, e.style);
